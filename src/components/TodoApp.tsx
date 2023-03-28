@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const InputContainer = styled.div``;
 
 export const ToDoApp = () => {
-  return <Container></Container>;
+  return <InputContainer></InputContainer>;
 };

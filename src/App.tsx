@@ -1,6 +1,5 @@
-import React from "react";
 import { createGlobalStyle } from "styled-components";
-import { TodoApp } from "./components/TodoApp";
+import { ToDoSection } from "./components/ToDoSection";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,7 +14,7 @@ function App() {
   return (
     <>
       <GlobalStyle></GlobalStyle>
-      <TodoApp />
+      <ToDoSection />
     </>
   );
 }

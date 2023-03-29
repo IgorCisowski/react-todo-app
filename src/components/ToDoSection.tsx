@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ToDoApp } from "./ToDoApp";
+import { ToDoApp } from "./TodoApp";
 
 const TodoAppSection = styled.section`
   display: flex;

@@ -14,7 +14,7 @@ const TodoAppSection = styled.section`
 const SectionContainer = styled.div`
   padding: 20px 20px;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 700px;
   width: 100%;
 
   ::-webkit-scrollbar {

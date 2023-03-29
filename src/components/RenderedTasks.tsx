@@ -5,6 +5,21 @@ import { Props } from "../types";
 // import deleteSvg from "../assets/delete.svg";
 // import updateSvg from "../assets/update.svg";
 
+const NoTasksMessage = styled.h2`
+  color: white;
+  text-align: center;
+  height: 290px;
+`;
+
+const UnorderedList = styled.ul`
+  height: 290px;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const ListItem = styled.li<Props>`
   display: flex;
   justify-content: space-between;
@@ -49,8 +64,11 @@ export const RenderedTasks = ({
   editTask,
   saveEditTask,
 }: any) => {
-  return (
-    <ul>
+  const isTodosEmpty = todos.length === 0;
+  return isTodosEmpty ? (
+    <NoTasksMessage>You have no tasks left...</NoTasksMessage>
+  ) : (
+    <UnorderedList>
       {todos.map((todo: any) => {
         return todo.isEditing ? (
           <UpdatedTask save={saveEditTask} task={todo} key={todo.id} />
@@ -97,6 +115,6 @@ export const RenderedTasks = ({
           </ListItem>
         );
       })}
-    </ul>
+    </UnorderedList>
   );
 };

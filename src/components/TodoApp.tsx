@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ToDo } from "../types";
 import { RenderedTasks } from "./RenderedTasks";
 
-const AppContainer = styled.div`
+const AppContainer = styled.form`
   background-color: #23272f;
   padding: 40px 20px 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -46,12 +46,20 @@ const AddButton = styled.button`
   font-size: 30px;
 `;
 
+// LOCAL STORAGE
+const todosLocalStorage = JSON.parse(localStorage.getItem("todos") || "[]");
+
 export const ToDoApp = () => {
-  const [todos, setTodos] = useState<ToDo[]>([]);
+  const [todos, setTodos] = useState<ToDo[]>(todosLocalStorage);
   const [value, setValue] = useState("");
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   // ADD TODO FUNCTION
-  const handleCreateTask = () => {
+  const handleCreateTask = (e: any) => {
+    e.preventDefault();
     // Prevent from adding empty Input
     if (value === "") {
       return false;
@@ -95,6 +103,7 @@ export const ToDoApp = () => {
       todos.map((todo) => {
         if (todo.id === id) {
           todo.isEditing = !todo.isEditing;
+          todo.status = false;
         }
         return todo;
       })

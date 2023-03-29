@@ -4,3 +4,7 @@ export type ToDo = {
   status: boolean;
   isEditing: boolean;
 };
+
+export interface Props {
+  todo: any;
+}
